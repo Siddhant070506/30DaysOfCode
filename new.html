@@ -21,7 +21,7 @@
             padding: 40px;
             border-radius: 15px;
             text-align: center;
-            width: 400px;
+            width: 420px;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
@@ -34,8 +34,15 @@
             line-height: 1.6;
         }
 
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            margin-top: 20px;
             padding: 10px 20px;
             border: none;
             border-radius: 25px;
@@ -48,6 +55,7 @@
 
         .btn:hover {
             background-color: #ddd;
+            transform: scale(1.05);
         }
 
         a {
@@ -68,9 +76,19 @@
             Web Development and DSA.
         </p>
 
-        <a href="mailto:siddhantraghuvanshi01@gmail.com">
-            <button class="btn">Contact Me</button>
-        </a>
+        <div class="buttons">
+            <a href="mailto:siddhantraghuvanshi01@gmail.com">
+                <button class="btn">Contact Me</button>
+            </a>
+
+            <a href="https://github.com/Siddhant070506/30DaysOfCode" target="_blank">
+                <button class="btn">GitHub</button>
+            </a>
+
+            <a href="https://leetcode.com/Siddhant0705/" target="_blank">
+                <button class="btn">LeetCode</button>
+            </a>
+        </div>
     </div>
 
 </body>
