@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Siddhant Raghuvanshi | Portfolio</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: white;
+            color: #764ba2;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- INTRO SECTION -->
+    <div class="card">
+        <h1>Hi, I'm Siddhant Raghuvanshi 👋</h1>
+
+        <p>
+            B.Tech ECE Student passionate about Software Development, VLSI, and IoT Systems.  
+            Strong foundation in C++, Data Structures & Algorithms, and Frontend Development.  
+            Actively building projects and solving problems on LeetCode.
+        </p>
+
+        <div class="buttons">
+            <a href="mailto:siddhantraghuvanshi01@gmail.com">
+                <button class="btn">Contact Me</button>
+            </a>
+
+            <a href="Siddhant_Raghuvanshi_Updated_Resume.docx" download>
+                <button class="btn">Download Resume</button>
+            </a>
+
+            <a href="https://github.com/Siddhant070506" target="_blank">
+                <button class="btn">GitHub</button>
+            </a>
+
+            <a href="https://leetcode.com/Siddhant0705/" target="_blank">
+                <button class="btn">LeetCode</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- SKILLS SECTION -->
+    <div class="card">
+        <h2>Technical Skills</h2>
+
+        <ul>
+            <li><strong>Programming:</strong> C, C++, Python</li>
+            <li><strong>Data Structures & Algorithms:</strong> DSA in C++ (Arrays, Hashing, Two Pointers)</li>
+            <li><strong>Frontend Development:</strong> HTML, CSS (Responsive Design, Flexbox)</li>
+            <li><strong>VLSI & Digital Design:</strong> Verilog, Cadence Tools</li>
+            <li><strong>IoT & Embedded:</strong> IoT-based System Development</li>
+        </ul>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <div class="card">
+        <h2>Projects</h2>
+
+        <ul>
+            <li>
+                <strong>30 Days of Code Challenge</strong><br>
+                Solving DSA problems daily in C++ and documenting progress on GitHub.
+            </li>
+
+            <li>
+                <strong>Home Automation IoT System</strong><br>
+                Designed IoT-based device for controlling home appliances.
+            </li>
+
+            <li>
+                <strong>Client-Server Architecture Model</strong><br>
+                Implemented scalable request-response communication model.
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
