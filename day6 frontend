@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Siddhant Raghuvanshi | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+            transition: 0.4s;
+        }
+
+        body.light {
+            background: #f1f5f9;
+            color: black;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 60px;
+            background: #1e293b;
+        }
+
+        body.light nav {
+            background: #cbd5e1;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .toggle-btn {
+            background: #38bdf8;
+        }
+
+        section {
+            padding: 60px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .submit-btn {
+            background: #38bdf8;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div><strong>Siddhant</strong></div>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+</nav>
+
+<section>
+    <h1>Contact Me</h1>
+    <div class="form-container">
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <textarea id="message" rows="4" placeholder="Your Message"></textarea>
+        <span class="error" id="error"></span>
+        <button class="submit-btn" onclick="validateForm()">Send Message</button>
+    </div>
+</section>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle("light");
+    }
+
+    function validateForm() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+        const error = document.getElementById("error");
+
+        if(name === "" || email === "" || message === "") {
+            error.textContent = "All fields are required!";
+            return;
+        }
+
+        if(!email.includes("@")) {
+            error.textContent = "Enter a valid email!";
+            return;
+        }
+
+        error.textContent = "";
+        alert("Message Sent Successfully 🚀");
+    }
+</script>
+
+</body>
+</html>
