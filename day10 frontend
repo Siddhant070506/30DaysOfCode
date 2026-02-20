@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siddhant | Portfolio</title>
+
+<style>
+:root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:white;
+    --primary:#3b82f6;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 60px;
+    background:var(--card);
+    position:sticky;
+    top:0;
+}
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--text);
+}
+
+nav a.active{
+    color:var(--primary);
+}
+
+/* HERO */
+.hero{
+    height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.btn{
+    padding:10px 20px;
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    margin-top:20px;
+    display:inline-block;
+}
+
+/* SECTION */
+.section{
+    padding:80px 60px;
+    text-align:center;
+}
+
+/* FILTER BUTTONS */
+.filters{
+    margin:20px 0;
+}
+
+.filters button{
+    padding:8px 15px;
+    margin:5px;
+    border:none;
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.filters button.active{
+    background:var(--primary);
+}
+
+/* PROJECT CARDS */
+.card{
+    background:var(--card);
+    padding:20px;
+    margin:15px auto;
+    width:60%;
+    border-radius:10px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.5s;
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+    .card{width:90%;}
+    nav{flex-direction:column;gap:10px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Siddhant</h2>
+    <ul>
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="hero">
+    <h1>Hi, I'm Siddhant 👋</h1>
+    <p>DSA | Frontend | Consistency Builder 🚀</p>
+    <a href="resume.pdf" download class="btn">Download Resume</a>
+</section>
+
+<section id="projects" class="section">
+    <h2>Projects</h2>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+        <button class="filter-btn" onclick="filterProjects('dsa')">DSA</button>
+        <button class="filter-btn" onclick="filterProjects('frontend')">Frontend</button>
+    </div>
+
+    <div class="card show" data-category="dsa">
+        <h3>30 Days Of Code</h3>
+        <p>Daily DSA problem solving journey.</p>
+    </div>
+
+    <div class="card show" data-category="frontend">
+        <h3>Portfolio Website</h3>
+        <p>Interactive portfolio with animations and filters.</p>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: siddhant@example.com</p>
+</section>
+
+<script>
+// FILTER LOGIC
+function filterProjects(category){
+    const cards = document.querySelectorAll('.card');
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    cards.forEach(card => {
+        if(category === 'all' || card.dataset.category === category){
+            card.style.display = "block";
+            setTimeout(()=> card.classList.add("show"), 10);
+        } else {
+            card.style.display = "none";
+            card.classList.remove("show");
+        }
+    });
+}
+
+// SCROLL NAV ACTIVE
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if(pageYOffset >= sectionTop){
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if(link.getAttribute("href") === "#" + current){
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
