@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siddhant | The Dark Developer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#0a0a0a;
+    color:#f5c518;
+    overflow-x:hidden;
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+    background:#111;
+    border-bottom:2px solid #f5c518;
+}
+
+nav h1{
+    font-size:22px;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav ul li{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav ul li:hover{
+    color:white;
+}
+
+/* Hero Section */
+.hero{
+    height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:50px;
+    text-transform:uppercase;
+    letter-spacing:4px;
+}
+
+.hero span{
+    color:white;
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:18px;
+    color:#aaa;
+}
+
+/* Button */
+.btn{
+    margin-top:25px;
+    padding:12px 30px;
+    background:#f5c518;
+    color:black;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 20px #f5c518;
+}
+
+.btn:hover{
+    background:black;
+    color:#f5c518;
+    border:1px solid #f5c518;
+}
+
+/* Section */
+.section{
+    padding:80px 10%;
+}
+
+.section h3{
+    font-size:32px;
+    margin-bottom:20px;
+    border-left:5px solid #f5c518;
+    padding-left:10px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#111;
+    padding:20px;
+    border:1px solid #222;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 20px #f5c518;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111;
+    border-top:1px solid #f5c518;
+}
+
+/* Animated Gotham Fog */
+.fog{
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle,rgba(255,255,255,0.02) 1%,transparent 40%);
+    animation:fogMove 20s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes fogMove{
+    from{transform:translate(-50%,-50%)}
+    to{transform:translate(0,0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="fog"></div>
+
+<nav>
+    <h1>🦇 Siddhant</h1>
+    <ul>
+        <li>Home</li>
+        <li>Projects</li>
+        <li>Skills</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h2>I Am <span>The Dark Developer</span></h2>
+    <p>ECE Undergrad | DSA | Verilog | IoT | Frontend Developer</p>
+    <button class="btn" onclick="downloadResume()">Download Resume</button>
+</section>
+
+<section class="section">
+    <h3>⚡ Skills</h3>
+    <div class="cards">
+        <div class="card">C++ & DSA</div>
+        <div class="card">Verilog & VLSI</div>
+        <div class="card">IoT Development</div>
+        <div class="card">Frontend (HTML, CSS, JS)</div>
+    </div>
+</section>
+
+<section class="section">
+    <h3>🛠 Projects</h3>
+    <div class="cards">
+        <div class="card">30 Days of Code Challenge</div>
+        <div class="card">Personal Portfolio Website</div>
+        <div class="card">IoT Based Smart System</div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Siddhant Raghuvanshi | Built in the Shadows 🦇
+</footer>
+
+<script>
+function downloadResume(){
+    window.open("Siddhant_Raghuvanshi_Updated_Resume.docx","_blank");
+}
+</script>
+
+</body>
+</html>
