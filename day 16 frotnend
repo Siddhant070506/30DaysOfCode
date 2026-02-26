@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siddhant | The Dark Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🔥 Background Batman Logo */
+body::before{
+    content:"";
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:600px;
+    height:600px;
+    background:url('https://upload.wikimedia.org/wikipedia/commons/0/0d/Batman_symbol.svg') no-repeat center;
+    background-size:contain;
+    opacity:0.05;
+    z-index:-1;
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+    background:#111;
+    border-bottom:2px solid red;
+}
+
+nav h2{
+    color:red;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav ul li:hover{
+    color:red;
+}
+
+/* Hero Section */
+.hero{
+    height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:55px;
+    color:red;
+    animation: glow 2s infinite alternate;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:18px;
+    max-width:600px;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px red; }
+    to{ text-shadow:0 0 25px crimson; }
+}
+
+.btn{
+    padding:12px 30px;
+    background:red;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:white;
+    color:red;
+    transform:scale(1.1);
+}
+
+/* Skills Section */
+.skills{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.skills h2{
+    margin-bottom:40px;
+    color:red;
+}
+
+.skill-box{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    background:#111;
+    padding:25px;
+    width:200px;
+    border-radius:10px;
+    border:1px solid red;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 20px red;
+}
+
+/* Footer */
+footer{
+    padding:20px;
+    text-align:center;
+    background:#111;
+    border-top:2px solid red;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>🦇 SID</h2>
+    <ul>
+        <li>Home</li>
+        <li>Skills</li>
+        <li>Projects</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>I Am The Dark Developer</h1>
+    <p>
+        B.Tech ECE | DSA Slayer ⚔ | Frontend Builder 💻  
+        Building logic by day, debugging by night.
+    </p>
+    <button class="btn" onclick="downloadResume()">Download Resume</button>
+</section>
+
+<section class="skills">
+    <h2>My Arsenal</h2>
+    <div class="skill-box">
+        <div class="card">C++</div>
+        <div class="card">DSA</div>
+        <div class="card">HTML</div>
+        <div class="card">CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">Verilog</div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Siddhant Raghuvanshi | Built in the Shadows 🦇
+</footer>
+
+<script>
+function downloadResume(){
+    const link = document.createElement('a');
+    link.href = "Siddhant_Raghuvanshi_Sexy_Resume.docx"; 
+    link.download = "Siddhant_Raghuvanshi_Resume.docx";
+    link.click();
+}
+</script>
+
+</body>
+</html>
