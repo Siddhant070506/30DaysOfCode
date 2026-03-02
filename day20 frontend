@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior:smooth;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siddhant | Dark Knight Developer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0a0a0a;
+    color:#ff2e2e;
+    overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #ff2e2e;
+    z-index:1000;
+}
+nav h1{color:white;}
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+nav ul li a{
+    text-decoration:none;
+    color:#ff2e2e;
+}
+nav ul li a:hover{color:white;}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:50px;
+    color:white;
+    text-shadow:0 0 20px red;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px red; }
+    to{ text-shadow:0 0 30px red; }
+}
+
+.btn{
+    margin-top:30px;
+    padding:12px 35px;
+    background:#ff2e2e;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* SECTION */
+.section{
+    padding:100px 10%;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+.section.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+h2{
+    color:white;
+    margin-bottom:40px;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.stat{
+    text-align:center;
+}
+
+.stat h3{
+    font-size:40px;
+    color:white;
+}
+
+.stat p{
+    color:#aaa;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#111;
+    border-top:1px solid red;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>🦇 Siddhant</h1>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#stats">Stats</a></li>
+</ul>
+</nav>
+
+<section id="home" class="hero section">
+<h2>Dark Knight Developer</h2>
+<a href="resume.pdf" download>
+<button class="btn">Download Resume</button>
+</a>
+</section>
+
+<section id="stats" class="section">
+<h2>My Progress</h2>
+
+<div class="stats">
+<div class="stat">
+<h3 class="counter" data-target="20">0</h3>
+<p>Days Completed</p>
+</div>
+
+<div class="stat">
+<h3 class="counter" data-target="40">0</h3>
+<p>LeetCode Problems</p>
+</div>
+
+<div class="stat">
+<h3 class="counter" data-target="3">0</h3>
+<p>Major Projects</p>
+</div>
+</div>
+
+</section>
+
+<footer>
+© 2026 Siddhant Raghuvanshi | Gotham Mode 🦇
+</footer>
+
+<script>
+
+/* Scroll Reveal */
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+let revealTop=sec.getBoundingClientRect().top;
+if(revealTop < window.innerHeight-100){
+sec.classList.add("active");
+}
+});
+});
+
+/* Counter Animation */
+const counters=document.querySelectorAll(".counter");
+let started=false;
+
+window.addEventListener("scroll",()=>{
+let statsTop=document.querySelector("#stats").getBoundingClientRect().top;
+
+if(statsTop < window.innerHeight-100 && !started){
+started=true;
+counters.forEach(counter=>{
+let update=()=>{
+let target=+counter.getAttribute("data-target");
+let count=+counter.innerText;
+let increment=target/100;
+
+if(count<target){
+counter.innerText=Math.ceil(count+increment);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+};
+update();
+});
+}
+});
+
+</script>
+
+</body>
+</html>
