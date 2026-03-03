@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior:smooth;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siddhant | Developer Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    transition:0.4s;
+    background:#0f172a;
+    color:white;
+}
+
+.light{
+    background:#f1f5f9;
+    color:#0f172a;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.3);
+    backdrop-filter:blur(8px);
+}
+
+.light nav{
+    background:rgba(255,255,255,0.6);
+}
+
+nav h2{
+    font-size:20px;
+}
+
+nav button{
+    padding:6px 12px;
+    cursor:pointer;
+    border:none;
+}
+
+section{
+    min-height:100vh;
+    padding:120px 10%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.hero h1{
+    font-size:45px;
+}
+
+.hero span{
+    color:#38bdf8;
+}
+
+.btn{
+    margin-top:20px;
+    padding:10px 25px;
+    background:#38bdf8;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.card{
+    padding:20px;
+    background:#1e293b;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.light .card{
+    background:white;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Siddhant</h2>
+<button onclick="toggleTheme()">Toggle</button>
+</nav>
+
+<section class="hero" id="home">
+<h1>Hi, I'm Siddhant 👋</h1>
+<h2>I am a <span id="typing"></span></h2>
+<button class="btn" onclick="scrollToProjects()">View Projects</button>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="projects">
+<div class="card">DSA Tracker App</div>
+<div class="card">Weather Web App</div>
+<div class="card">Portfolio Website</div>
+</div>
+</section>
+
+<footer>
+© 2026 Siddhant Raghuvanshi
+</footer>
+
+<script>
+// Theme Toggle
+function toggleTheme(){
+    document.body.classList.toggle("light");
+}
+
+// Smooth scroll
+function scrollToProjects(){
+    document.getElementById("projects").scrollIntoView();
+}
+
+// Typing Effect
+const words = ["Frontend Developer","C++ Programmer","DSA Enthusiast","Problem Solver"];
+let i=0,j=0,currentWord="",isDeleting=false;
+
+function type(){
+    currentWord = words[i];
+    
+    if(!isDeleting){
+        document.getElementById("typing").textContent = currentWord.slice(0,++j);
+        if(j===currentWord.length){
+            isDeleting=true;
+            setTimeout(type,1000);
+            return;
+        }
+    } else {
+        document.getElementById("typing").textContent = currentWord.slice(0,--j);
+        if(j===0){
+            isDeleting=false;
+            i=(i+1)%words.length;
+        }
+    }
+    setTimeout(type,100);
+}
+type();
+</script>
+
+</body>
+</html>
