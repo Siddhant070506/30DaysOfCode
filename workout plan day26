@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Workout Planner</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#1f1c2c,#928dab);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+color:white;
+}
+
+.container{
+width:700px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:30px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+}
+
+.tabs{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-bottom:25px;
+}
+
+.tab{
+padding:10px 16px;
+border-radius:20px;
+background:rgba(255,255,255,0.15);
+cursor:pointer;
+transition:0.3s;
+font-weight:bold;
+}
+
+.tab:hover{
+background:white;
+color:black;
+}
+
+.active{
+background:white;
+color:black;
+}
+
+.workout{
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:15px;
+min-height:180px;
+}
+
+.exercise{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+.exercise:last-child{
+border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💪 Weekly Workout Plan</h1>
+
+<div class="tabs">
+<div class="tab active" onclick="showDay('monday',this)">Monday</div>
+<div class="tab" onclick="showDay('tuesday',this)">Tuesday</div>
+<div class="tab" onclick="showDay('wednesday',this)">Wednesday</div>
+<div class="tab" onclick="showDay('thursday',this)">Thursday</div>
+<div class="tab" onclick="showDay('friday',this)">Friday</div>
+<div class="tab" onclick="showDay('saturday',this)">Saturday</div>
+<div class="tab" onclick="showDay('sunday',this)">Sunday</div>
+</div>
+
+<div class="workout" id="workout"></div>
+
+</div>
+
+<script>
+
+const workouts = {
+
+monday:[
+["Bench Press","4 x 8"],
+["Incline Dumbbell Press","4 x 10"],
+["Chest Fly Machine","3 x 12"],
+["Push Ups","3 x Failure"]
+],
+
+tuesday:[
+["Pull Ups","4 x 8"],
+["Lat Pulldown","4 x 10"],
+["Seated Row","3 x 12"],
+["Face Pull","3 x 12"]
+],
+
+wednesday:[
+["Barbell Curl","4 x 10"],
+["Hammer Curl","3 x 12"],
+["Tricep Pushdown","4 x 10"],
+["Skull Crushers","3 x 10"]
+],
+
+thursday:[
+["Overhead Press","4 x 8"],
+["Lateral Raise","4 x 12"],
+["Rear Delt Fly","3 x 12"],
+["Shrugs","3 x 15"]
+],
+
+friday:[
+["Squats","4 x 8"],
+["Leg Press","4 x 10"],
+["Leg Curl","3 x 12"],
+["Calf Raises","4 x 15"]
+],
+
+saturday:[
+["Incline Bench Press","4 x 8"],
+["Dumbbell Press","4 x 10"],
+["Cable Fly","3 x 12"],
+["Push Ups","3 x Failure"]
+],
+
+sunday:[
+["Rest Day 😴","Recovery"],
+["Stretching","10 min"],
+["Light Walk","20 min"]
+]
+
+};
+
+function showDay(day,element){
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+element.classList.add("active");
+
+let html="";
+
+workouts[day].forEach(e=>{
+html+=`
+<div class="exercise">
+<span>${e[0]}</span>
+<span>${e[1]}</span>
+</div>
+`
+});
+
+document.getElementById("workout").innerHTML=html;
+
+}
+
+showDay("monday",document.querySelector(".tab"));
+
+</script>
+
+</body>
+</html>
