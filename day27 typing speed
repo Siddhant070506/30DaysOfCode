@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Typing Speed Test</title>
+
+<style>
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+background:#1e293b;
+padding:30px;
+border-radius:12px;
+width:600px;
+max-width:95%;
+}
+
+#text{
+margin-bottom:15px;
+line-height:1.5;
+}
+
+textarea{
+width:100%;
+height:120px;
+padding:10px;
+border:none;
+border-radius:6px;
+outline:none;
+}
+
+.stats{
+display:flex;
+justify-content:space-between;
+margin-top:15px;
+}
+
+button{
+margin-top:15px;
+padding:10px;
+border:none;
+background:#38bdf8;
+cursor:pointer;
+border-radius:6px;
+}
+.correct{color:lightgreen;}
+.wrong{color:red;}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Typing Speed Test</h2>
+
+<p id="text"></p>
+
+<textarea id="input" placeholder="Start typing..."></textarea>
+
+<div class="stats">
+<p>Time: <span id="time">60</span>s</p>
+<p>WPM: <span id="wpm">0</span></p>
+<p>Accuracy: <span id="acc">0</span>%</p>
+</div>
+
+<button onclick="restart()">Restart</button>
+
+</div>
+
+<script>
+
+const paragraphs=[
+"Consistency is the key to success in coding journey",
+"Practice daily to improve your problem solving skills",
+"Frontend and DSA together make you a complete developer",
+"Discipline beats motivation in the long run"
+];
+
+let text=document.getElementById("text");
+let input=document.getElementById("input");
+
+let time=60;
+let timer=null;
+let started=false;
+
+function loadText(){
+let random=paragraphs[Math.floor(Math.random()*paragraphs.length)];
+text.innerHTML=random.split("").map(c=>`<span>${c}</span>`).join("");
+}
+loadText();
+
+input.addEventListener("input",()=>{
+
+if(!started){
+timer=setInterval(updateTime,1000);
+started=true;
+}
+
+let chars=text.querySelectorAll("span");
+let inputChars=input.value.split("");
+
+let correct=0;
+
+chars.forEach((char,index)=>{
+if(inputChars[index]==null){
+char.classList.remove("correct","wrong");
+}
+else if(inputChars[index]===char.innerText){
+char.classList.add("correct");
+char.classList.remove("wrong");
+correct++;
+}
+else{
+char.classList.add("wrong");
+char.classList.remove("correct");
+}
+});
+
+let acc=Math.round((correct/inputChars.length)*100) || 0;
+document.getElementById("acc").innerText=acc;
+
+let words=input.value.trim().split(" ").length;
+let wpm=Math.round((words/timeElapsed())*60) || 0;
+document.getElementById("wpm").innerText=wpm;
+
+});
+
+function updateTime(){
+time--;
+document.getElementById("time").innerText=time;
+
+if(time<=0){
+clearInterval(timer);
+input.disabled=true;
+}
+}
+
+function timeElapsed(){
+return 60-time;
+}
+
+function restart(){
+location.reload();
+}
+
+</script>
+
+</body>
+</html>
