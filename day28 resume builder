@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI Resume Builder</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI}
+body{
+  background:linear-gradient(120deg,#020617,#0f172a);
+  color:white;
+}
+.container{
+  display:flex;
+  height:100vh;
+}
+
+/* LEFT FORM */
+.form{
+  width:45%;
+  padding:30px;
+  overflow:auto;
+}
+h1{margin-bottom:20px}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+}
+button{
+  padding:12px;
+  background:#22c55e;
+  border:none;
+  border-radius:8px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+/* RIGHT PREVIEW */
+.preview{
+  width:55%;
+  background:white;
+  color:black;
+  padding:30px;
+  overflow:auto;
+}
+.resume h2{color:#2563eb;margin-top:15px}
+.resume p{margin:5px 0}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form">
+<h1>Resume Builder</h1>
+
+<h3>Personal Info</h3>
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+
+<h3>Education</h3>
+<textarea id="education" placeholder="Your education"></textarea>
+
+<h3>Skills</h3>
+<textarea id="skills" placeholder="Skills"></textarea>
+
+<h3>Projects</h3>
+<textarea id="projects" placeholder="Projects"></textarea>
+
+<button onclick="updateResume()">Update Preview</button>
+<button onclick="downloadPDF()">Download PDF</button>
+</div>
+
+<div class="preview">
+<div id="resume" class="resume">
+<h1 id="rname">Your Name</h1>
+<p id="rcontact">email | phone</p>
+
+<h2>Education</h2>
+<p id="reducation"></p>
+
+<h2>Skills</h2>
+<p id="rskills"></p>
+
+<h2>Projects</h2>
+<p id="rprojects"></p>
+</div>
+</div>
+
+</div>
+
+<script>
+const ids=["name","email","phone","education","skills","projects"];
+
+function saveData(){
+  let data={};
+  ids.forEach(id=>data[id]=document.getElementById(id).value);
+  localStorage.setItem("resumeData",JSON.stringify(data));
+}
+
+function loadData(){
+  let data=JSON.parse(localStorage.getItem("resumeData"));
+  if(!data) return;
+  ids.forEach(id=>document.getElementById(id).value=data[id]);
+  updateResume();
+}
+
+function updateResume(){
+  saveData();
+  rname.innerText=name.value||"Your Name";
+  rcontact.innerText=email.value+" | "+phone.value;
+  reducation.innerText=education.value;
+  rskills.innerText=skills.value;
+  rprojects.innerText=projects.value;
+}
+
+function downloadPDF(){
+  html2pdf().from(document.getElementById("resume")).save();
+}
+
+loadData();
+</script>
+</body>
+</html>
